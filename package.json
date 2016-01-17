@@ -1,0 +1,36 @@
+{
+  "name": "basic-userman",
+  "version": "0.4.0",
+  "description": "node rest api for basic user/group management",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vencax/node-basic-userman"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.8.2",
+    "cors": "^2.7.1",
+    "express": "^4.10.4",
+    "express-jwt": "^3.3.0",
+    "polymorphic-crud-resource": "blueskydigital/polymorphic-crud-resource",
+    "sequelize": "^3.14.2"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "horaa": "^0.1.2-alpha",
+    "jsonwebtoken": "^5.5.4",
+    "mocha": "^2.3.4",
+    "request": "^2.42.0",
+    "should": "^4.0.4",
+    "sqlite3": "^3.0.4"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --compilers coffee:coffee-script/register test"
+  },
+  "author": "Vaclav Klecanda",
+  "license": "MIT"
+}
