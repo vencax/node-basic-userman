@@ -17,7 +17,6 @@ module.exports = (g) ->
     , (err, res, body) ->
       return done err if err
       res.statusCode.should.eql 401
-      body.should.eql 'not authorized'
       done()
 
   it "must NOT create wizards group (user not among admins)", (done)->
@@ -41,7 +40,7 @@ module.exports = (g) ->
   it "must create wizards group", (done)->
     token = g.getToken
       gid: 1234
-      groups: [0]
+      groups: [parseInt(process.env.ADMINS_GID)]
 
     request
       url: addr
@@ -52,6 +51,7 @@ module.exports = (g) ->
         'Authorization': "Bearer #{token}"
     , (err, res, body) ->
       return done err if err
+      console.log body
       res.statusCode.should.eql 201
       body.id.should.be.ok
       body.name.should.eql g.wizards.name

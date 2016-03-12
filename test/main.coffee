@@ -6,6 +6,7 @@ jwt = require 'jsonwebtoken'
 bodyParser = require('body-parser')
 
 process.env.SERVER_SECRET = 'fhdsakjhfkjal'
+process.env.ADMINS_GID = '12'
 # process.env.DATABASE_URL = 'sqlite://db.sqlite'
 port = process.env.PORT || 3333
 g =

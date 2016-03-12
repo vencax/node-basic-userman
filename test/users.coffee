@@ -22,7 +22,6 @@ module.exports = (g)->
     , (err, res, body) ->
       return done(err) if err
       res.statusCode.should.eql 401
-      body.should.eql 'not authorized'
       done()
 
   it "must NOT create sauron (not admin)", (done)->
@@ -45,7 +44,7 @@ module.exports = (g)->
 
   it "must create sauron", (done)->
     token = g.getToken
-      gid: 0
+      gid: parseInt(process.env.ADMINS_GID)
       groups: []
 
     request

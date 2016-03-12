@@ -3,11 +3,12 @@ bodyParser = require('body-parser')
 cors = require('cors')
 expressJwt = require('express-jwt')
 
-ADMINS_GID = process.env.ADMINS_GID || 0
+ADMINS_GID = parseInt(process.env.ADMINS_GID) || 1
 
 
 ensureAdmin = (req, res, next)->
-  if req.user.gid == ADMINS_GID || req.user.groups.indexOf(ADMINS_GID) >= 0
+  groups = req.user.groups || []
+  if req.user.gid == ADMINS_GID || groups.indexOf(ADMINS_GID) >= 0
     return next()
   return res.status(401).send('insufficient permissions')
 
@@ -30,7 +31,7 @@ module.exports = (db) ->
 
   app.use (err, req, res, next) ->
     if err.name and err.name == 'UnauthorizedError'
-      return res.status(401).send('not authorized')
+      return res.status(401).send(err.message || 'not authorized')
     next(err)
 
   app: app
