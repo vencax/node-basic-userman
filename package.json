@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/vencax/node-basic-userman"
   },
-  "main": "server.js",
+  "main": "index.coffee",
   "engines": {
     "node": ">=0.8.0"
   },
